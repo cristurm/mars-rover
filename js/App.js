@@ -8,16 +8,31 @@ var App = function () {
 			var east  = new Direction();
 			var west  = new Direction();
 
-			north.init("North", west, east);
-			south.init("South", east, west);
-			east.init("East", north, south);
-			west.init("West", south, north);
+			north.init("North", west, east, function (_line, _cell) {
+				/* direction.moveForwards() definition */
+				return [_line + 1, _cell];
+			});
+
+			south.init("South", east, west, function (_line, _cell) {
+				/* direction.moveForwards() definition */
+				return [_line - 1, _cell];
+			});
+
+			east.init("East", north, south, function (_line, _cell) {
+				/* direction.moveForwards() definition */
+				return [_line, _cell + 1];
+			});
+
+			west.init("West", south, north, function (_line, _cell) {
+				/* direction.moveForwards() definition */
+				return [_line, _cell - 1];
+			});
 
 			this.plain = new MarsPlain();
 			this.rover = new Rover();
 
 			this.plain.init(5, 5);
-			this.rover.init(0, 0, north);
+			this.rover.init(0, 0, north, 0);
 
 			this.bindEvents();
 		},
@@ -36,9 +51,7 @@ var App = function () {
 				coordinatesArray = coordinatesArray.split("");
 
 				if (coordinatesArray.length > 0) {
-					that.rover.receiveInstrictions(coordinatesArray);
-				} else {
-					console.log("no can do.")
+					that.rover.receiveInstructions(coordinatesArray);
 				}
 			});
 		}

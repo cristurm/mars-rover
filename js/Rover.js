@@ -1,46 +1,60 @@
 var Rover = function () {
 	return {
-		init : function (_posLine, _posCell, _direction) {
-			this.roverElement = document.getElementById("mars-rover");
+		init : function (_posLine, _posCell, _direction, _angle) {
 			this.posLine = parseInt(_posLine, 10);
 			this.posCell = parseInt(_posCell, 10);
 			this.direction = _direction;
+			this.angle = _angle;
+			this.roverElement = document.getElementById("mars-rover");
+			this.coordinatesMap = [["L", "R", "M"], [this.turnLeft.bind(this), this.turnRight.bind(this), this.move.bind(this)]];
 
-			this.coordinatesMap = [["L", "R", "M"], [this.turnLeft, this.turnRight, this.move]];
-
-			this.move(this.posLine, this.posCell);
+			this.setTopAndLeft();
+			this.setRotation();
 		},
 
 		move : function () {
-			
-			
-			console.log("move", this.posLine, this.posCell, this.direction);
+			var newPosition = this.direction.moveForwards(this.posLine, this.posCell);
 
-			this.posLine = _line;
-			this.roverElement.style.top = APP.plain.marsPlainMatrix[_line][this.posCell].offsetTop;
+			if (newPosition[0] < APP.plain.height && newPosition[1] < APP.plain.width) {
+				this.posLine = newPosition[0];
+				this.posCell = newPosition[1];
 
-			this.posCell = _cell;
-			this.roverElement.style.left = APP.plain.marsPlainMatrix[this.posLine][_cell].offsetLeft;
+				this.setTopAndLeft();
+			} else {
+				console.log("Sir, I can't go there.");
+			}
 		},
 
 		turnLeft : function () {
-			console.log("turn left", this.posLine, this.posCell, this.direction);
 			this.direction = this.direction.left;
+			this.angle -= 90;
+			this.setRotation();
 		},
 
 		turnRight : function () {
-			console.log("turn right", this.posLine, this.posCell, this.direction);
 			this.direction = this.direction.right;
+			this.angle += 90;
+			this.setRotation();
 		},
 
-		receiveInstrictions : function (_coordinates) {
-			var index = 0;
+		setTopAndLeft : function () {
+			this.roverElement.style.top = APP.plain.marsPlainMatrix[this.posLine][this.posCell].offsetTop;
+			this.roverElement.style.left = APP.plain.marsPlainMatrix[this.posLine][this.posCell].offsetLeft;
+		},
+
+		setRotation : function () {
+			this.roverElement.style.transform = "rotate(" + this.angle + "deg)";
+		},
+
+		receiveInstructions : function (_coordinates) {
+			var that = this,
+				index, interval, mapPosition;
 
 			for (index = 0; index < _coordinates.length; index += 1) {
 				var mapPosition = this.coordinatesMap[0].indexOf(_coordinates[index].toUpperCase());
 
 				if (mapPosition >= 0) {
-					this.coordinatesMap[1][mapPosition].call(this);
+					this.coordinatesMap[1][mapPosition]();
 				} else {
 					console.log("Sir, I don't know this instruction: ", _coordinates[index]);
 				}

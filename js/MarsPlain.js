@@ -18,7 +18,7 @@ var MarsPlain = function () {
 
 			lines.id = "lines";
 
-			for (var lineCounter = 0; lineCounter < this.width; lineCounter += 1) {
+			for (var lineCounter = 0; lineCounter < this.height; lineCounter += 1) {
 				var liLine = document.createElement("li"),
 					columns = document.createElement("ol");
 
@@ -27,7 +27,7 @@ var MarsPlain = function () {
 				liLine.id = "line-" + lineCounter;
 				liLine.className = "line";
 
-				for (var columnCounter = 0; columnCounter < this.height; columnCounter += 1) {
+				for (var columnCounter = 0; columnCounter < this.width; columnCounter += 1) {
 					var liCell = document.createElement("li");
 
 					liCell.id = "cell-" + columnCounter;
