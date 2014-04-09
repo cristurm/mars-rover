@@ -8,25 +8,10 @@ var App = function () {
 			var east  = new Direction();
 			var west  = new Direction();
 
-			north.init("North", west, east, function (_line, _cell) {
-				/* direction.moveForwards() definition */
-				return [_line + 1, _cell];
-			});
-
-			south.init("South", east, west, function (_line, _cell) {
-				/* direction.moveForwards() definition */
-				return [_line - 1, _cell];
-			});
-
-			east.init("East", north, south, function (_line, _cell) {
-				/* direction.moveForwards() definition */
-				return [_line, _cell + 1];
-			});
-
-			west.init("West", south, north, function (_line, _cell) {
-				/* direction.moveForwards() definition */
-				return [_line, _cell - 1];
-			});
+			north.init("North", west, east, function (_line, _cell) { return [_line + 1, _cell] });
+			south.init("South", east, west, function (_line, _cell) { return [_line - 1, _cell] });
+			east.init("East", north, south, function (_line, _cell) { return [_line, _cell + 1] });
+			west.init("West", south, north, function (_line, _cell) { return [_line, _cell - 1] });
 
 			this.plain = new MarsPlain();
 			this.rover = new Rover();

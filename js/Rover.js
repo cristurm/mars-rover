@@ -48,17 +48,24 @@ var Rover = function () {
 
 		receiveInstructions : function (_coordinates) {
 			var that = this,
-				index, interval, mapPosition;
+				index = 0,
+				interval, mapPosition;
 
-			for (index = 0; index < _coordinates.length; index += 1) {
-				var mapPosition = this.coordinatesMap[0].indexOf(_coordinates[index].toUpperCase());
+			interval = setInterval(function () {
+				mapPosition = that.coordinatesMap[0].indexOf(_coordinates[index].toUpperCase());
 
 				if (mapPosition >= 0) {
-					this.coordinatesMap[1][mapPosition]();
+					that.coordinatesMap[1][mapPosition]();
 				} else {
 					console.log("Sir, I don't know this instruction: ", _coordinates[index]);
 				}
-			}
+
+				index += 1;
+
+				if (index >= _coordinates.length) {
+					clearInterval(interval);
+				}
+			}, 1000);
 		}
 	}
 }
