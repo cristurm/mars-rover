@@ -18,6 +18,29 @@ var App = function () {
 
 			this.plain.init(5, 5);
 			this.rover.init(0, 0, north);
+
+			this.bindEvents();
+		},
+
+		bindEvents : function () {
+			var that = this,
+				coordinatesForm = document.getElementById("rover-coordinates"),
+				coordinatesInput = document.getElementById("coordinates"),
+				coordinatesArray = [];
+
+			coordinatesForm.addEventListener("submit", function (_event) {
+				_event.preventDefault();
+
+				coordinatesArray = coordinatesInput.value.trim().replace(/\s/g, "");
+				coordinatesInput.value = coordinatesArray;
+				coordinatesArray = coordinatesArray.split("");
+
+				if (coordinatesArray.length > 0) {
+					that.rover.receiveInstrictions(coordinatesArray);
+				} else {
+					console.log("no can do.")
+				}
+			});
 		}
 	}
 }

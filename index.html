@@ -8,16 +8,20 @@
 
 	<h1>Mars Rover</h1>
 
-	<form id="rover-directions">
-		<label for="directions">Directions:</label>
-		<input type="text" name="directions" id="directions" />
+	<form id="rover-coordinates">
+		<label for="coordinates">Coordinates:</label>
+		<input type="text" name="coordinates" id="coordinates" placeholder="eg: MMLMLMMRMMLMLM" />
+		<span>M: Move, L: Rotate Left, R: Rotate Right</span>
+		<input type="submit" name="submit" id="submit" value="submit" />
 	</form>
 
 	<div id="mars-plain">
 
 	</div>
 
-	<div id="mars-rover"></div>
+	<div id="mars-rover">
+		<div id="tooltip"></div>
+	</div>
 
 
 	<script type="text/javascript" src="js/Direction.js"></script>
