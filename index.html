@@ -8,21 +8,26 @@
 
 	<h1>Mars Rover</h1>
 
-	<form id="rover-coordinates">
-		<label for="coordinates">Coordinates:</label>
+	<form id="rover-coordinates" data-state="active">
+		<label for="coordinates">Coordinates: <span>M: Move, L: Rotate Left, R: Rotate Right</span></label>
 		<input type="text" name="coordinates" id="coordinates" placeholder="eg: MMLMLMMRMMLMLM" />
-		<span>M: Move, L: Rotate Left, R: Rotate Right</span>
-		<input type="submit" name="submit" id="submit" value="submit" />
+		<input type="submit" name="coordinates-submit" id="coordinates-submit" value="submit" />
 	</form>
 
-	<div id="mars-plain">
-
-	</div>
+	<form id="field-size">
+		<label>Field Size:</label>
+		<input type="number" min="0" name="width" id="width" value="5" />
+		x
+		<input type="number" min="0" name="height" id="height" value="5" />
+		<input type="submit" name="size-submit" id="size-submit" value="submit" />
+	</form>
 
 	<div id="mars-rover">
-		<div id="tooltip"></div>
+		<div id="rover-feedback"></div>
 	</div>
 
+	<div id="mars-plain">
+	</div>
 
 	<script type="text/javascript" src="js/Direction.js"></script>
 	<script type="text/javascript" src="js/MarsPlain.js"></script>

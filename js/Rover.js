@@ -15,13 +15,15 @@ var Rover = function () {
 		move : function () {
 			var newPosition = this.direction.moveForwards(this.posLine, this.posCell);
 
-			if (newPosition[0] < APP.plain.height && newPosition[1] < APP.plain.width) {
+			if (newPosition[0] >= 0 && newPosition[0] < APP.plain.height && 
+				newPosition[1] >= 0 && newPosition[1] < APP.plain.width) {
+
 				this.posLine = newPosition[0];
 				this.posCell = newPosition[1];
 
 				this.setTopAndLeft();
 			} else {
-				console.log("Sir, I can't go there.");
+				console.log("Sir, I can't go " + this.direction.name + " any further.");
 			}
 		},
 
@@ -38,15 +40,19 @@ var Rover = function () {
 		},
 
 		setTopAndLeft : function () {
+			console.log("line: ", this.posLine, "Cell: ", this.posCell);
+
 			this.roverElement.style.top = APP.plain.marsPlainMatrix[this.posLine][this.posCell].offsetTop;
 			this.roverElement.style.left = APP.plain.marsPlainMatrix[this.posLine][this.posCell].offsetLeft;
 		},
 
 		setRotation : function () {
+			console.log("Direction: ", this.direction.name);
+
 			this.roverElement.style.transform = "rotate(" + this.angle + "deg)";
 		},
 
-		receiveInstructions : function (_coordinates) {
+		receiveInstructions : function (_coordinates, _callback) {
 			var that = this,
 				index = 0,
 				interval, mapPosition;
@@ -64,6 +70,7 @@ var Rover = function () {
 
 				if (index >= _coordinates.length) {
 					clearInterval(interval);
+					_callback();
 				}
 			}, 1000);
 		}

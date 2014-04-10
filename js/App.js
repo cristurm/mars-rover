@@ -25,18 +25,43 @@ var App = function () {
 		bindEvents : function () {
 			var that = this,
 				coordinatesForm = document.getElementById("rover-coordinates"),
+				sizeForm = document.getElementById("field-size"),
 				coordinatesInput = document.getElementById("coordinates"),
-				coordinatesArray = [];
+				sizeInputWidth = document.getElementById("width"),
+				sizeInputHeight = document.getElementById("height"),
+				coordinatesSubmit = document.getElementById("coordinates-submit"),
+				sizeSubmit = document.getElementById("size-submit"),
+				coordinatesArray = [],
+				coordinatesCallback = function () {
+					coordinatesForm.setAttribute("data-state", "active");
+					coordinatesSubmit.disabled = false;
+				};
 
 			coordinatesForm.addEventListener("submit", function (_event) {
 				_event.preventDefault();
 
-				coordinatesArray = coordinatesInput.value.trim().replace(/\s/g, "");
-				coordinatesInput.value = coordinatesArray;
-				coordinatesArray = coordinatesArray.split("");
+				if (this.getAttribute("data-state") === "active") {
+					coordinatesForm.setAttribute("data-state", "disabled");
+					coordinatesSubmit.disabled = true;
 
-				if (coordinatesArray.length > 0) {
-					that.rover.receiveInstructions(coordinatesArray);
+					coordinatesArray = coordinatesInput.value.trim().replace(/\s/g, "");
+					coordinatesInput.value = coordinatesArray;
+					coordinatesArray = coordinatesArray.split("");
+
+					if (coordinatesArray.length > 0) {
+						that.rover.receiveInstructions(coordinatesArray, coordinatesCallback);
+					} else {
+						coordinatesCallback();
+					}
+				}
+			});
+
+			sizeForm.addEventListener("submit", function (_event) {
+				_event.preventDefault();
+
+				if ((sizeInputWidth.value  !== that.plain.width  && sizeInputWidth.value  > 0) ||
+					(sizeInputHeight.value !== that.plain.height && sizeInputHeight.value > 0)) {
+					console.log("heya")
 				}
 			});
 		}

@@ -22,7 +22,6 @@ var MarsPlain = function () {
 				var liLine = document.createElement("li"),
 					columns = document.createElement("ol");
 
-
 				columns.className = "columns";
 				liLine.id = "line-" + lineCounter;
 				liLine.className = "line";
