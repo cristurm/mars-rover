@@ -54,7 +54,9 @@ li:nth-child(even) li:nth-child(odd) {
 	margin: 25px;
 	background: rgba(0, 0, 0, 0.8);
 	position: absolute;
-	transition: left 1s, top 1s, transform 1s;
+	transition: left 1s linear, 
+				top  1s linear,
+				transform 1s linear;
 }
 
 #mars-rover:before {
