@@ -55,15 +55,6 @@ var App = function () {
 					}
 				}
 			});
-
-			sizeForm.addEventListener("submit", function (_event) {
-				_event.preventDefault();
-
-				if ((sizeInputWidth.value  !== that.plain.width  && sizeInputWidth.value  > 0) ||
-					(sizeInputHeight.value !== that.plain.height && sizeInputHeight.value > 0)) {
-					console.log("heya")
-				}
-			});
 		}
 	}
 }

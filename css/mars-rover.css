@@ -7,41 +7,31 @@ body {
 
 form {
 	text-align: left;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
 }
 
-form label {
+label {
 	display: block;
+	font-weight: bold;
+	flex-basis: 100%;
+	flex-shrink: 0;
+	margin-bottom: 10px;
 }
 
-form span {
+label span {
+	display: block;
 	font-weight: normal;
 }
 
-form label {
-	font-weight: bold;
+input[type=text] {
+	flex-basis: 70%;
 }
 
 input[type=submit] {
-	width: 100%;
-	margin: 5px 0;
-}
-
-#rover-coordinates {
-	float: left;
-	width: 60%;
-}
-
-#rover-coordinates input {
-	width: 100%;
-}
-
-#field-size {
-	float: right;
-	width: 30%;
-}
-
-#field-size input[type=number] {
-	width: 45%;
+	flex-basis: 25%;
+	margin-left: 10px;
 }
 
 /* mars plain */
@@ -82,9 +72,7 @@ li:nth-child(even) li:nth-child(odd) {
 	margin: 25px;
 	background: rgba(0, 0, 0, 0.8);
 	position: absolute;
-	transition: left 1s linear, 
-				top  1s linear,
-				transform 1s linear;
+	transition: all 1s linear;
 }
 
 #mars-rover:before {
