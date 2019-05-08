@@ -1,59 +1,34 @@
 class MarsPlain {
-	constructor (_width, _height) {
-		this.width = _width;
-		this.height = _height;
+	constructor (width, height) {
+		this.width = width;
+		this.height = height;
 	}
 
-	generateLines() {
-		var lines = new Array(this.height);
-
-		return lines.fill(document.createElement('tr'));
+	generateLines(rows) {
+		return new Array(this.height).fill(rows);
 	}
 
-	// return {
-	// 	init : function (_width, _height) {
-	// 		// this.marsPlainElement = document.getElementById("mars-plain");
-	// 		this.width = parseInt(_width, 10);
-	// 		this.height = parseInt(_height, 10);
-	// 		this.marsPlainMatrix = [];
-	//
-	// 		for (var counter = 0; counter < _width; counter += 1) {
-	// 			this.marsPlainMatrix[counter] = new Array(_height);
-	// 		}
-	//
-	// 		this.renderMatrix();
-	// 	},
-	//
-	// 	renderMatrix : function () {
-	// 		var lines = document.createElement("ol");
-	//
-	// 		lines.id = "lines";
-	//
-	// 		for (var lineCounter = 0; lineCounter < this.height; lineCounter += 1) {
-	// 			var liLine = document.createElement("li"),
-	// 				columns = document.createElement("ol");
-	//
-	// 			columns.className = "columns";
-	// 			liLine.id = "line-" + lineCounter;
-	// 			liLine.className = "line";
-	//
-	// 			for (var columnCounter = 0; columnCounter < this.width; columnCounter += 1) {
-	// 				var liCell = document.createElement("li");
-	//
-	// 				liCell.id = "cell-" + columnCounter;
-	// 				liCell.className = "column";
-	//
-	// 				columns.appendChild(liCell);
-	// 				this.marsPlainMatrix[lineCounter][columnCounter] = liCell;
-	// 			}
-	//
-	// 			liLine.insertBefore(columns, liLine.firstChild);
-	// 			lines.insertBefore(liLine, lines.firstChild)
-	// 		}
-	//
-	// 		this.marsPlainElement.appendChild(lines);
-	// 	}
-	// }
+	generateRows() {
+		return new Array(this.width).fill('row');
+	}
+
+	generateMatrix() {
+		return this.generateLines(this.generateRows());
+	}
+
+	render() {
+		var table = document.createElement('table');
+
+		for (var height = this.height; height--;) {
+			var row = table.insertRow();
+
+			for (var width = this.width; width--;) {
+				var cell = row.insertCell();
+			}
+		}
+
+		return table;
+	}
 };
 
 module.exports = MarsPlain;
