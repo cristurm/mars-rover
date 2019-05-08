@@ -8,8 +8,7 @@ var App = function () {
 			this.plain = new MarsPlain(5, 5);
 			this.render();
 
-			this.rover = new Rover();
-			this.rover.init(0, 0, north, 0);
+			this.rover = new Rover(0, 0, north, 0);
 
 			this.bindEvents();
 		},

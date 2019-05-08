@@ -1,33 +1,33 @@
-<html>
-<head>
-	<title>Mars Rover</title>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>Mars Rover</title>
+		<link rel="stylesheet" type="text/css" href="css/mars-rover.css">
+	</head>
+	<body>
+		<h1>Mars Rover</h1>
 
-	<link rel="stylesheet" type="text/css" href="css/mars-rover.css">
-</head>
-<body>
+		<form id="rover-coordinates" data-state="active">
+			<label for="coordinates">
+				Coordinates:
+				<span>
+					M = Move<br/>
+					L = Rotate Left<br/>
+					R = Rotate Right
+				</span>
+			</label>
+			<input type="text" name="coordinates" id="coordinates" placeholder="eg: MMLMLMMRMMLMLM" />
+			<input type="submit" name="coordinates-submit" id="coordinates-submit" value="submit" />
+		</form>
 
-	<h1>Mars Rover</h1>
+		<div id="mars-rover"></div>
 
-	<form id="rover-coordinates" data-state="active">
-		<label for="coordinates">
-			Coordinates:
-			<span>
-				M = Move<br/>
-				L = Rotate Left<br/>
-				R = Rotate Right
-			</span>
-		</label>
-		<input type="text" name="coordinates" id="coordinates" placeholder="eg: MMLMLMMRMMLMLM" />
-		<input type="submit" name="coordinates-submit" id="coordinates-submit" value="submit" />
-	</form>
+		<div id="mars-plain"></div>
 
-	<div id="mars-rover"></div>
-
-	<div id="mars-plain"></div>
-
-	<script type="text/javascript" src="js/Direction.js"></script>
-	<script type="text/javascript" src="js/MarsPlain.js"></script>
-	<script type="text/javascript" src="js/Rover.js"></script>
-	<script type="text/javascript" src="js/App.js"></script>
-</body>
+		<script type="text/javascript" src="js/Direction.js"></script>
+		<script type="text/javascript" src="js/MarsPlain.js"></script>
+		<script type="text/javascript" src="js/Rover.js"></script>
+		<script type="text/javascript" src="js/App.js"></script>
+	</body>
 </html>

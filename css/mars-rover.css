@@ -59,7 +59,7 @@ tr:nth-child(even) td:nth-child(odd) {
 	margin: 25px;
 	background: rgba(0, 0, 0, 0.8);
 	position: absolute;
-	transition: all 1s linear;
+	transition: all 700ms linear;
 }
 
 #mars-rover:before {
