@@ -1,4 +1,0 @@
-describe("Mars Rover", function() {
-	
-    
-});

@@ -1,0 +1,23 @@
+{
+  "name": "mars-rover",
+  "version": "1.0.0",
+  "description": "Classic Mars Rover Exercise",
+  "main": "index.html",
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "^6.1.4"
+  },
+  "scripts": {
+    "test": "mocha --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cristurm/mars-rover.git"
+  },
+  "author": "Cristina Sturm",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cristurm/mars-rover/issues"
+  },
+  "homepage": "https://github.com/cristurm/mars-rover#readme"
+}
