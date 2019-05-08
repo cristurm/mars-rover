@@ -15,7 +15,7 @@ var Rover = function () {
 		move : function () {
 			var newPosition = this.direction.moveForwards(this.posLine, this.posCell);
 
-			if (newPosition[0] >= 0 && newPosition[0] < APP.plain.height && 
+			if (newPosition[0] >= 0 && newPosition[0] < APP.plain.height &&
 				newPosition[1] >= 0 && newPosition[1] < APP.plain.width) {
 
 				this.posLine = newPosition[0];

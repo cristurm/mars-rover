@@ -25,12 +25,8 @@ var App = function () {
 		bindEvents : function () {
 			var that = this,
 				coordinatesForm = document.getElementById("rover-coordinates"),
-				sizeForm = document.getElementById("field-size"),
 				coordinatesInput = document.getElementById("coordinates"),
-				sizeInputWidth = document.getElementById("width"),
-				sizeInputHeight = document.getElementById("height"),
 				coordinatesSubmit = document.getElementById("coordinates-submit"),
-				sizeSubmit = document.getElementById("size-submit"),
 				coordinatesArray = [],
 				coordinatesCallback = function () {
 					coordinatesForm.setAttribute("data-state", "active");
