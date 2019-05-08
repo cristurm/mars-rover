@@ -5,11 +5,22 @@ var MarsPlain = require('../js/MarsPlain');
 
 
 describe('MarsPlain', () => {
-  it('returns a matrix with the given width and height', () => {
-    var plain = new MarsPlain(5, 5);
+  describe('.constructor', () => {
+    var plain;
 
-    expect(plain.width).to.equal(5);
-    expect(plain.height).to.equal(5);
+    beforeEach(() => {
+      plain = new MarsPlain(5, 5);
+    });
+
+    it('returns a matrix with the given width and height', () => {
+      expect(plain.width).to.equal(5);
+      expect(plain.height).to.equal(5);
+    });
+
+    it('returns an array of arrays', () => {
+      expect(plain.matrix.length).to.equal(5);
+      expect(plain.matrix[0].length).to.equal(5);
+    });
   });
 
   describe('.generateLines', () => {
@@ -18,32 +29,13 @@ describe('MarsPlain', () => {
     });
   });
 
-  describe('.generateRows', () => {
+  describe('.generateCells', () => {
     it('returns an array with a length equal to the given width', () => {
-      expect(new MarsPlain(5, 5).generateRows().length).to.equal(5);
+      expect(new MarsPlain(5, 5).generateCells().length).to.equal(5);
     });
   });
 
   describe('.generateMatrix', () => {
-    var marsPlain, matrix;
 
-    beforeEach(() => {
-      marsPlain = new MarsPlain(5, 5);
-
-      simple.mock(marsPlain, 'generateLines').callOriginal();
-      simple.mock(marsPlain, 'generateRows').callOriginal();
-
-      matrix = marsPlain.generateMatrix();
-    });
-
-    it('invokes lines and rows generation methods once', () => {
-      expect(marsPlain.generateLines.callCount).to.equal(1);
-      expect(marsPlain.generateRows.callCount).to.equal(1);
-    });
-
-    it('returns an array of arrays', () => {
-      expect(matrix.length).to.equal(5);
-      expect(matrix[0].length).to.equal(5);
-    });
   });
 });

@@ -1,34 +1,37 @@
 class MarsPlain {
-	constructor (width, height) {
-		this.width = width;
+	constructor (height, width) {
 		this.height = height;
+		this.width = width;
+
+		this.matrix = this.generateLines(this.generateCells());
 	}
 
-	generateLines(rows) {
-		return new Array(this.height).fill(rows);
+	generateLines(cells) {
+		return new Array(this.height).fill(cells);
 	}
 
-	generateRows() {
-		return new Array(this.width).fill('row');
+	generateCells() {
+		return new Array(this.width).fill('empty cell');
 	}
 
-	generateMatrix() {
-		return this.generateLines(this.generateRows());
-	}
-
-	render() {
-		var table = document.createElement('table');
-
-		for (var height = this.height; height--;) {
-			var row = table.insertRow();
-
-			for (var width = this.width; width--;) {
-				var cell = row.insertCell();
-			}
-		}
-
-		return table;
-	}
+	// render() {
+	// 	var table = document.createElement('table');
+	// 	var plain = this;
+	//
+	// 	this.matrix.forEach(function(line, index) {
+	// 		var newRow = table.insertRow();
+	//
+	// 		line.forEach(function(cell, index2) {
+	// 			var newCell = newRow.insertCell();
+	//
+	// 			plain.matrix[index][index2] = newCell;
+	// 		});
+	// 	});
+	//
+	// 	console.log(this.matrix);
+	//
+	// 	return table;
+	// }
 };
 
 module.exports = MarsPlain;

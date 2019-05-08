@@ -40,10 +40,13 @@ var Rover = function () {
 		},
 
 		setTopAndLeft : function () {
-			console.log("line: ", this.posLine, "Cell: ", this.posCell);
+			console.log("Line: ", this.posLine, "Cell: ", this.posCell);
 
-			this.roverElement.style.top = APP.plain.marsPlainMatrix[this.posLine][this.posCell].offsetTop;
-			this.roverElement.style.left = APP.plain.marsPlainMatrix[this.posLine][this.posCell].offsetLeft;
+			// console.log(APP.plain.matrix[this.posLine][this.posCell]);
+			// console.log(APP.plain.matrix[this.posLine][this.posCell].getBoundingClientRect());
+			//
+			// this.roverElement.style.top = APP.plain.matrix[this.posLine][this.posCell].getBoundingClientRect().top;
+			// this.roverElement.style.left = APP.plain.matrix[this.posLine][this.posCell].getBoundingClientRect().left;
 		},
 
 		setRotation : function () {

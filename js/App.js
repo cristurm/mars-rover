@@ -1,6 +1,6 @@
 var App = function () {
 	return {
-		init : function (_posX, _posY, _direction) {
+		init: function (_posX, _posY, _direction) {
 			console.log("I've been a mars rover for many's the year.");
 
 			var north = new Direction();
@@ -13,16 +13,16 @@ var App = function () {
 			east.init("East", north, south, function (_line, _cell) { return [_line, _cell + 1] });
 			west.init("West", south, north, function (_line, _cell) { return [_line, _cell - 1] });
 
-			this.plain = new MarsPlain();
-			this.rover = new Rover();
+			this.plain = new MarsPlain(5, 5);
+			this.render();
 
-			this.plain.init(5, 5);
+			this.rover = new Rover();
 			this.rover.init(0, 0, north, 0);
 
 			this.bindEvents();
 		},
 
-		bindEvents : function () {
+		bindEvents: function () {
 			var that = this,
 				coordinatesForm = document.getElementById("rover-coordinates"),
 				coordinatesInput = document.getElementById("coordinates"),
@@ -51,6 +51,10 @@ var App = function () {
 					}
 				}
 			});
+		},
+
+		render: function () {
+			// document.getElementById("mars-plain").appendChild(this.plain.render());
 		}
 	}
 }

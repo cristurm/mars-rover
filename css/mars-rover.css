@@ -35,33 +35,20 @@ input[type=submit] {
 }
 
 /* mars plain */
-#mars-plain {
-	display: inline-block;
-	clear: both;
+table {
+	border-collapse: collapse;
+	margin: 0 auto;
 }
 
-ol {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	display: inline-block;
-	white-space: nowrap;
-}
-
-li li {
-	display: inline-block;
+td {
 	width: 100px;
 	height: 100px;
 	background: #960;
 }
 
-li:nth-child(odd) li:nth-child(even),
-li:nth-child(even) li:nth-child(odd) {
+tr:nth-child(odd) td:nth-child(even),
+tr:nth-child(even) td:nth-child(odd) {
 	background: #f90;
-}
-
-.line {
-	height: 100px;
 }
 
 /* the rover */
