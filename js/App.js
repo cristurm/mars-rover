@@ -3,15 +3,7 @@ var App = function () {
 		init: function (_posX, _posY, _direction) {
 			console.log("I've been a mars rover for many's the year.");
 
-			var north = new Direction();
-			var south = new Direction();
-			var east  = new Direction();
-			var west  = new Direction();
-
-			north.init("North", west, east, function (_line, _cell) { return [_line + 1, _cell] });
-			south.init("South", east, west, function (_line, _cell) { return [_line - 1, _cell] });
-			east.init("East", north, south, function (_line, _cell) { return [_line, _cell + 1] });
-			west.init("West", south, north, function (_line, _cell) { return [_line, _cell - 1] });
+			var {north, south, east, west} = setUpDirections();
 
 			this.plain = new MarsPlain(5, 5);
 			this.render();

@@ -1,5 +1,4 @@
 var expect = require('chai').expect;
-var simple = require('simple-mock');
 
 var MarsPlain = require('../js/MarsPlain');
 
@@ -33,9 +32,5 @@ describe('MarsPlain', () => {
     it('returns an array with a length equal to the given width', () => {
       expect(new MarsPlain(5, 5).generateCells().length).to.equal(5);
     });
-  });
-
-  describe('.generateMatrix', () => {
-
   });
 });
